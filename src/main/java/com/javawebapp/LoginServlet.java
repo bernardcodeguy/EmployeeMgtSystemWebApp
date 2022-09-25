@@ -28,7 +28,8 @@ public class LoginServlet extends HttpServlet {
 
 		
 		  if(dao.checkCredentials(email, password)) { 
-			  HttpSession session = request.getSession(); session.setAttribute("email", email);
+			  HttpSession session = request.getSession(); 
+			  session.setAttribute("email", email);
 			  response.sendRedirect("dashboard");
 		 
 		 }else { 

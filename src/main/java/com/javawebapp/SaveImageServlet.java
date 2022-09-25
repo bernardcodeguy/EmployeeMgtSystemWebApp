@@ -53,6 +53,9 @@ public class SaveImageServlet extends HttpServlet {
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			
 			if(result.equals("Data entry successfull")) {
@@ -67,14 +70,12 @@ public class SaveImageServlet extends HttpServlet {
 	 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		  int id = Integer.parseInt(request.getParameter("id"));
-		  String url = "jdbc:mysql://localhost:3307/emsdb";
-			String username = "root";
-			String pass = "1234";
+		  
 			String sql = "SELECT * FROM employees WHERE id=?";
 			
 			try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection(url,username,pass);
+			
+			Connection con = ConnectionManager.getConnection();
 			
 			PreparedStatement ps;
 		  

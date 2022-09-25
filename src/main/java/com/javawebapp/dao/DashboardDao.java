@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import com.javawebapp.ConnectionManager;
 import com.javawebapp.Employee;
 
 public class DashboardDao {
@@ -17,12 +18,9 @@ public class DashboardDao {
 		
 		try {
 			employee = new Employee();
-			String url = "jdbc:mysql://localhost:3307/emsdb";
-			String username = "root";
-			String pass = "1234";
+			
 			String sql = "SELECT * FROM employees WHERE email=?";
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection(url,username,pass);
+			Connection con = ConnectionManager.getConnection();
 			
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, email);

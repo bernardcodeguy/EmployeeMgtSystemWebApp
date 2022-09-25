@@ -7,17 +7,17 @@ import java.sql.ResultSet;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import com.javawebapp.ConnectionManager;
+
 public class LoginDao {
 
 	public Boolean checkCredentials(String email,String password) {
 		
 		try {
-			String url = "jdbc:mysql://localhost:3307/emsdb";
-			String username = "root";
-			String pass = "1234";
+			
 			String sql = "SELECT * FROM employees WHERE email=?";
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection(url,username,pass);
+			
+			Connection con = ConnectionManager.getConnection();
 			
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, email);

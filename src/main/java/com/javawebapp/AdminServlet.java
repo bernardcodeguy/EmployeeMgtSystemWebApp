@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.javawebapp.dao.AdminDao;
+
 
 
 @WebServlet("/admin")
@@ -22,9 +22,9 @@ public class AdminServlet extends HttpServlet {
 		
 		
 		String key = request.getParameter("key");
-		AdminDao dao = new AdminDao();
 		
-		if(dao.confirmAdmin(key)) {
+		
+		if(key.equals("kmTECHaDm1")) {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("key", key);
